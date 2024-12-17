@@ -4,9 +4,11 @@ import store.dao.*;
 public class AdminService {
 	private Scanner sc;
 	private ProductDao pdo;
+	private  ProductConnect pc;
 	public void adminMenu() {
 				sc = new Scanner(System.in);
 				pdo = new ProductDao();
+				pc = new ProductConnect();
 				String choice = "y";				
 				while(choice.equals("y")) {
 					System.out.println("1. List the products in the store" );
@@ -20,25 +22,32 @@ public class AdminService {
 					int ch = sc.nextInt();
 					switch(ch) {
 					case 1: 
-						pdo.displayDetail();
+						pc.displayProduct();
+						//pdo.displayDetail();
 						break;
 					case 2: 
-						pdo.searchByProductID();
+						pc.searchProductbyId();
+						//pdo.searchByProductID();
 						break;
 					case 3:
-						pdo.displayProductsByCategory();
+						pc.searchByCategory();
+						//pdo.displayProductsByCategory();
 						break;
 					case 4:
-						pdo.searchByProductName();
+						pc.searchByName();
+						//pdo.searchByProductName();
 						break;
 					case 5:
-						pdo.checkTotalAmount();
+						pc.totalPrice();
+						//pdo.checkTotalAmount();
 						break;
 					case 6:
-						pdo.findProfitbyCategory();
+						pc.totalProfitByCategory();
+						//pdo.findProfitbyCategory();
 						break;
 					case 7:
-						pdo.insertProduct();
+						pc.insertProduct();
+						//pdo.insertProduct();
 						break;
 					}
 					System.out.println("You want to cotinue y/n");

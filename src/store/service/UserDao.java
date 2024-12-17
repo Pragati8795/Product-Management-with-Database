@@ -39,24 +39,26 @@ public class UserDao {
 		String usn = sc.next();
 		System.out.println("Enter Password");
 		String upass = sc.next();
+		
+		
 		try {
 			stat=con.prepareStatement("Select username,password from users");
-			System.out.println("check: "+usn);
 			ResultSet r = stat.executeQuery();
 			while(r.next()) {
-				
 				if(usn.equals("admin")) {
-					
+					System.out.println("admin check");
 					this.userType = "admin";
-					
-				}
-				else if((r.getString(1).equals(usn))){	
-					
+					break;
+					}
+
+				else if((r.getString(1).equals(usn)) && !(r.getString(1).equals("admin"))){	
+					System.out.println("cust check");
 					this.userType = "Customer";
 					break;
 					
 				}
 				else {
+					//System.out.println("check: "+r.getString(1));
 					this.userType = "New user";
 				}
 			
